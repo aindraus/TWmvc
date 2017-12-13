@@ -1,8 +1,8 @@
 <?php
+require_once '../../app/libraries/Inflect.php';
 // Create New Scaffold - Create new Model, Controller, DB Table, Views (index, edit, add, show)
 class Scaffold {
   private $name;
-  private $model;
   private $dbarray = [];
 
   public function __construct($name) {
