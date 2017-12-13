@@ -25,6 +25,11 @@ class Scaffold {
         }
         // Creating Required Files
         mkdir('../../app/views/' . $name, 0777);
+        touch('../../app/controllers/' . ucwords($name) . '.php');
+        $controllerFile = fopen('../../app/controllers/' . ucwords($name) . '.php', 'w');
+        $txt = "<?php \n //" . ucwords($name) . " Controller \n class " . ucwords($name) . " extends Controller { \n\n\n}";
+        fwrite($controllerFile, $txt);
+        fclose($controllerFile);
         $fileCreate = ['index', 'edit', 'add', 'show'];
         foreach($fileCreate as $file) {
           $myFile = touch('../../app/views/' . $name . '/' . $file . '.php');
