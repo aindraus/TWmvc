@@ -5,5 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title><?php echo SITE_NAME; ?></title>
+  <style>
+    body {
+      margin:0;
+      padding:0;
+      font-family: 'Helvatica', sans-serif;
+    }
+  </style>
 </head>
 <body>

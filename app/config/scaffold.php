@@ -1,23 +1,21 @@
 <?php
 require_once '../../app/libraries/Inflect.php';
+require_once '../../app/config/db_config.php';
 // Create New Scaffold - Create new Model, Controller, DB Table, Views (index, edit, add, show)
 class Scaffold {
   private $name;
-  private $dbarray = [];
+  private $dbarray;
 
-  public function __construct($name) {
+  public function __construct($name, $attr) {
     $this->name = $name;
-    if(!empty($name)) {
-        $sql = 'CREATE TABLE IF NOT EXISTS tw_' . $name . ' (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY)';
+    $this->dbarray = $attr;
+    if(!empty($name) && !empty($attr)) {
+        $sql = 'CREATE TABLE IF NOT EXISTS tw_' . $name . ' (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, '. $attr . ')';
         // $sql = 'INSERT INTO users(title) VALUES (:title)';
-        $host = 'localhost';
-        $user = 'root';
-        $password = 'root';
-        $db = 'pdotest1';
         // Set DSN
-        $dsn = 'mysql:host=' . $host . ';dbname=' . $db;
+        $dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME;
         //SET DATABASE VARIABLES
-        $pdo = new PDO($dsn, $user, $password);
+        $pdo = new PDO($dsn, DB_USER, DB_PASS);
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         if(!$stmt) {
