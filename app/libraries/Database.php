@@ -25,4 +25,50 @@ class Database {
       echo $this->error;
     }
   }
+  // Prepare statement
+  public function query($query){
+    $this->stmt = $this->dbh->prepare($query);
+  }
+  // Binding Values
+  public function bind($param, $value, $type = null){
+    if(is_null($type)){
+      switch(true){
+        case is_int($value):
+          $type = PDO::PARAM_INT;
+          break;
+
+        case is_bool($value):
+          $type = PDO::PARAM_BOOL;
+          break;
+
+        case is_null($value):
+          $type = PDO::PARAM_NULL;
+          break;
+
+        default:
+          $type = PDO::PARAM_STR;
+      }
+    }
+  $this->stmt->bindValue($param, $value, $type);
+  }
+  // Exectue Prepared Statement
+
+  public function execute(){
+    return $this->stmt->excute();
+  }
+
+  // Get results set
+
+  public function resultSet(){
+    $this->execute();
+    return $this->stmt->fetchAll(PDO::FETCH_OBJ);
+  }
+
+  public function single(){
+    $this->execute();
+    return $this->stmt->fetch(PDO::FETCH_OBJ);
+  }
+  public function rowCount(){
+    return $this->stmt->rowCount();
+  }
 }
