@@ -24,6 +24,9 @@ class Scaffold {
         // Creating Required Files
         mkdir('../../app/views/' . $name, 0777);
         touch('../../app/controllers/' . ucwords($name) . '.php');
+        $modelName = new Inflect();
+        $model = $modelName->singularize($name);
+        touch('../../app/models/' . ucwords($model) . '.php');
         $controllerFile = fopen('../../app/controllers/' . ucwords($name) . '.php', 'w');
         $txt = "<?php \n //" . ucwords($name) . " Controller \n class " . ucwords($name) . " extends Controller { \n\n\n}";
         fwrite($controllerFile, $txt);
