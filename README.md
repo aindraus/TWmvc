@@ -1,4 +1,7 @@
 # The Webery - PHP MVC
-PHP basic MVC framework - Created to be a basis for multiple PHP projects deployed by The Webery Studio.
+Basic PHP MVC framework, with scaffolding to get you creating stuff quicker.
 
-Open Source, Feel Free to use it if you want.
+P.S. This was built in effort to help me expand my knowledge and create a project starter for future projects.
+
+## Getting Started
+This MVC will be updated on regular basis, for now to get started just download or clone the repo and get started on your project.
