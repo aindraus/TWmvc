@@ -5,3 +5,6 @@ P.S. This was built in effort to help me expand my knowledge and create a projec
 
 ## Getting Started
 This MVC will be updated on regular basis, for now to get started just download or clone the repo and get started on your project.
+
+### Installation
+Once downloaded just run your local server and navigate to the application root and you will be prompt to install your db details.
